@@ -4,6 +4,7 @@ Sometimes you might want to catch specific information from a column in a file, 
 One of these is `cut` which cuts the string you provide it by specific delimiters (separators). 
 
 Let's go to the `sam` data folder and have a look.
+
 ```
 cd data/sam
 
@@ -74,6 +75,7 @@ pblr_C2_cod_76593425_2/2
 ```
 
 You can count the number of field the number you want is, in our case it is field nr. 4:
+
 ```
 cat somefile.sam | cut -d_ -f4
 @SQ	SN:ATLCOD1As07633	LN:4850223
