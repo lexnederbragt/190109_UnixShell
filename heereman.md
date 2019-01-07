@@ -20,7 +20,7 @@ well_0008.txt  well_0017.txt  well_0026.txt  well_0035.txt  well_0044.txt  well_
 well_0009.txt  well_0018.txt  well_0027.txt  well_0036.txt  well_0045.txt  well_0054.txt
 ```
 
-Here are 59 files, all formatted the same way and following the same naming scheme. The first four lines of every file give some information about the content of the file w3 columnshile the rest contains two columns with data specified in line 2 and line 3 of the file.
+Here are 59 files, all formatted the same way and following the same naming scheme. The first four lines of every file give some information about the content of the file while the rest contains two columns with data specified in line 2 and line 3 of the file.
 
 ```
 head -n 4 well_0001.txt
