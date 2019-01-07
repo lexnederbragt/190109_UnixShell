@@ -5,7 +5,7 @@ One of these is `cut` which cuts the string you provide it by specific delimiter
 
 Let's go to the `sam` data folder and have a look.
 ```
-ls sam
+cd data/sam
 
 somefile.sam
 ```
