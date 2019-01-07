@@ -1,6 +1,6 @@
 # Data manipulation with ´awk/gawk´
 
-´Awk´ is a scripting language used for manipulating data and generating reports.The `awk` command programming language requires no compiling, and allows the user to use variables, numeric functions, string functions, and logical operators.
+`Awk` is a scripting language used for manipulating data and generating reports.The `awk` command programming language requires no compiling, and allows the user to use variables, numeric functions, string functions, and logical operators.
 
 A lot of research data is in tabular format. Sometimes you want to cut columns, re-order columns or do arithmetic on column values. The `awk` language can help you with that and can be used in combination with other `Unix` command.
 
