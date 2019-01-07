@@ -33,7 +33,7 @@ pblr_C2_cod_76094556_1/5_4634/0_4630
 pblr_C2_cod_77217656_3/2_2140/0_2139
 pblr_C2_cod_76593425_2/2_1047/0_1046
 ...
-``
+```
 
 We provided cut with an option `-f1`. This tells cut we want field number 1 after the string has been split by tab. we can ask for a range og fields using `-` between the numbers, or we can provide a comma-delimited list of numbers to get specific fields.
 
