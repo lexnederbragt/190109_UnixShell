@@ -72,10 +72,17 @@ cat well_0002.txt | awk '{print $1}'
 12750
 13350
 ```
+
+It prints the first columns of all the records.
 </details>
 <p></p>
 
-I do not want the first 4 lines. We can introduce a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
+I do not want the first 4 lines and want to remove them from the output. For this, we can look at a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
+
+<details><summary>Other build-in variable in `awk`</summary>
+[8 Powerful Awk Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR](https://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/)
+</details>
+<p></p>
 
 ```
 cat well_0002.txt | awk '{if (FNR > 4) print $1}'
