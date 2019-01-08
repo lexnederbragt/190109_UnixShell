@@ -72,9 +72,8 @@ cat well_0002.txt | awk '{print $1}'
 12750
 13350
 ```
-
 </details>
-
+<p></p>
 
 I do not want the first 4 lines. We can introduce a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
 
