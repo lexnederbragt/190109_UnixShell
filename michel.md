@@ -54,6 +54,25 @@ Let's write our first `awk` command. What do you expect the following command wi
 ```
 cat well_0002.txt | awk '{print $1}'
 ```
+<details><summary>Solution</summary>
+
+```
+#
+#
+#
+
+5520
+7000
+8400
+9300
+9770
+10530
+10750
+12750
+13350
+```
+</details>
+
 
 I do not want the first 4 lines. We can introduce a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
 
