@@ -171,6 +171,25 @@ Last but not least, I want to write it to a file:
 for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done > file.asc
 ```
 
+<details><summary>Solution</summary>
+
+```
+cat -n file.asc
+
+     1  well_0001       1000    522.43
+     2  well_0001       1130    581.34
+     3  well_0001       1500    757.53
+<skip>
+<skip>
+<skip>
+  4077  well_0059       17050   2029.82
+  4078  well_0059       17200   2041.96
+  4079  well_0059       17250   2043.78
+```
+
+</details>
+<p></p>
+
 # Manipulating columns (if time is left)
 
 I have forgotten to check one thing before I started and that is whether all *depth* values are given in meters. Some of these files might have depth values in *feet*. I want to adjust the files containing depth values in *feet*
