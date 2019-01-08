@@ -31,7 +31,7 @@ head -n 4 well_0001.txt
 
 ```
 
-The goal of this lesson is to create one single file containing 3 columns where the first column conatins the well number (as stated in the first line of every file), the second column contains the depth and the third column the one way time, like this:
+The goal of this lesson is to create one single file containing 3 columns where the first column contains the *well number* (as stated in the first line of every file), the second column contains the *depth* and the third column the *one-way time*, like this:
 
 ```
 more all_wells.txt
@@ -47,3 +47,124 @@ well_0059 17200 2041.96
 well_0059 17250 2043.78
 ```
 
+# Working with columns
+
+Let's write our first `awk` command. What do you expect the following command will print to `stdout`
+
+```
+cat well_0002.txt | awk '{print $1}'
+```
+
+I do not want the first 4 lines. We can introduce a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
+
+```
+cat well_0002.txt | awk '{if (FNR > 4) print $1}'
+```
+
+I also want to add the second column and I want the columns to be separated with a `TAB`. To do the last, we introduce a new build-in variable called `OFS`, which stands for *output field separator*.
+
+```
+cat well_0002.txt | awk '{OFS="\t"; if (FNR > 4) print $1, $2}'
+```
+or
+```
+cat well_0002.txt | awk 'BEGIN {OFS="\t"} {if (FNR > 4) print $1, $2}'
+```
+
+Now, I want to add a first column that contains the string *well_0002*, which is located in the first line of the file. I can get hold on that string in the beginning of the `awk` statement by setting a variable.
+
+```
+cat well_0002.txt | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'
+
+well_0002       5520    843.2
+well_0002       7000    1089.3
+well_0002       8400    1303.3
+well_0002       9300    1434.3
+well_0002       9770    1492.3
+well_0002       10530   1570.4
+well_0002       10750   1580.4
+well_0002       12750   1700.4
+well_0002       13350   1767.4
+```
+
+Now I want to do this for all my wells. How can we do that?
+
+```
+for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done
+```
+
+Last but not least, I want to write it to a file:
+
+```
+for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done > file.asc
+```
+
+# Manipulating columns (if time is left)
+
+I have forgotten to check one thing before I started and that is whether all *depth* values are given in meters.
+
+```
+egrep "(ft)" *
+
+well_0002.txt:# Column 1 depth MDRKB (ft)
+well_0003.txt:# Column 1 depth MDRKB (ft)
+well_0004.txt:# Column 1 depth MDRKB (ft)
+well_0005.txt:# Column 1 depth MDRKB (ft)
+well_0006.txt:# Column 1 depth MDRKB (ft)
+well_0007.txt:# Column 1 depth MDRKB (ft)
+well_0011.txt:# Column 1 depth MDRKB (ft)
+well_0015.txt:# Column 1 depth MDRKB (ft)
+well_0016.txt:# Column 1 depth MDRKB (ft)
+well_0017.txt:# Column 1 depth MDRKB (ft)
+well_0018.txt:# Column 1 depth MDRKB (ft)
+well_0019.txt:# Column 1 depth MDRKB (ft)
+well_0021.txt:# Column 1 depth MDRKB (ft)
+well_0022.txt:# Column 1 depth MDRKB (ft)
+well_0024.txt:# Column 1 depth MDRKB (ft)
+well_0025.txt:# Column 1 depth MDRKB (ft)
+well_0026.txt:# Column 1 depth MDRKB (ft)
+well_0027.txt:# Column 1 depth MDRKB (ft)
+well_0028.txt:# Column 1 depth MDRKB (ft)
+well_0029.txt:# Column 1 depth MDRKB (ft)
+well_0055.txt:# Column 1 depth MDRKB (ft)
+well_0056.txt:# Column 1 depth MDRKB (ft)
+well_0057.txt:# Column 1 depth MDRKB (ft)
+well_0059.txt:# Column 1 depth MDRKB (ft)
+```
+
+and with the use of the earlier learned `cut` command we get:
+
+```
+egrep "(ft)" * | cut -d: -f1
+
+well_0002.txt
+well_0003.txt
+well_0004.txt
+well_0005.txt
+well_0006.txt
+well_0007.txt
+well_0011.txt
+well_0015.txt
+well_0016.txt
+well_0017.txt
+well_0018.txt
+well_0019.txt
+well_0021.txt
+well_0022.txt
+well_0024.txt
+well_0025.txt
+well_0026.txt
+well_0027.txt
+well_0028.txt
+well_0029.txt
+well_0055.txt
+well_0056.txt
+well_0057.txt
+well_0059.txt
+```
+
+Now we can run a loop on these files and manipulate their depth columns
+
+```
+for i in $(egrep "(ft)" * | cut -d: -f1); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR < 4) {print $0} else {print int($1*0.3048), $2}}' > $i.new; done
+```
