@@ -79,14 +79,14 @@ It prints the first columns of all the records.
 
 I do not want the first 4 lines and want to remove them from the output. For this, we can look at a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
 
+```
+cat well_0002.txt | awk '{if (FNR > 4) print $1}'
+```
+
 <details><summary>Other build-in variable in `awk`</summary>
 [<a href="https://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/">8 Powerful Awk Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR</a>
 </details>
 <p></p>
-
-```
-cat well_0002.txt | awk '{if (FNR > 4) print $1}'
-```
 
 I also want to add the second column and I want the columns to be separated with a `TAB`. To do the last, we introduce a new build-in variable called `OFS`, which stands for *output field separator*.
 
