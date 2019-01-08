@@ -140,6 +140,7 @@ Now, I want to add a first column that contains the string *well_0002*, which is
 
 ```
 cat well_0002.txt | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'
+```
 
 <details><summary>Solution</summary>
 
@@ -161,13 +162,13 @@ well_0002       13350   1767.4
 Now I want to do this for all my wells. How can we do that?
 
 ```
-for i in $(ls &ast.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done
+for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done
 ```
 
 Last but not least, I want to write it to a file:
 
 ```
-for i in $(ls &ast.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done > file.asc
+for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done > file.asc
 ```
 
 # Manipulating columns (if time is left)
