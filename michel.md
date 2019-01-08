@@ -54,8 +54,9 @@ Let's write our first `awk` command. What do you expect the following command wi
 ```
 cat well_0002.txt | awk '{print $1}'
 ```
-<details><summary>Solution</summary>
 
+<details><summary>Solution</summary>
+<p>
 ```
 #
 #
@@ -71,6 +72,7 @@ cat well_0002.txt | awk '{print $1}'
 12750
 13350
 ```
+</p>
 </details>
 
 
