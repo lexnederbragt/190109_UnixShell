@@ -269,7 +269,7 @@ well_0059.txt
 </details>
 <p></p>
 
-This output can be used in a loop and piped to an awk-script to manipulate the depth columns and com\nvert these from *feet* to *meter*.
+This output can be used in a loop and piped to an awk-script to manipulate the depth columns and convert these from *feet* to *meter*.
 
 ```
 for i in $(egrep "(ft)" * | cut -d: -f1); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR < 4) {print $0} else {print int($1*0.3048), $2}}' > $i.new; done
