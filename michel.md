@@ -135,6 +135,11 @@ This command prints the first and second columns of record number 5 and onwards 
 </details>
 <p></p>
 
+<details><summary>The `BEGIN` pattern in `awk`</summary>
+BEGIN pattern means that Awk will execute the action(s) specified in BEGIN once before any input lines are read.
+See also: <a href="https://www.tecmint.com/learn-use-awk-special-patterns-begin-and-end/">Learn How to Use Awk Special Patterns ‘BEGIN and END’</a>
+</details>
+<p></p>
 
 Now, I want to add a first column that contains the string *well_0002*, which is located in the first line of the file. I can get hold on that string in the beginning of the `awk` statement by setting a variable.
 
