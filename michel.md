@@ -192,11 +192,17 @@ cat -n file.asc
 
 # Manipulating columns (if time is left)
 
-I have forgotten to check one thing before I started and that is whether all *depth* values are given in meters. Some of these files might have depth values in *feet*. I want to adjust the files containing depth values in *feet*
+I have forgotten to check one thing before I started and that is whether all *depth* values are given in meters. Some of these files might have depth values in *feet*. I want to adjust the files containing depth values in *feet* and convert these to *meter*.
+
+First; I need to find out which of the file contain depth values in feet. I can use a Unix-command called `egrep` to directly search for strings within files. We can write:
 
 ```
 egrep "(ft)" *
+```
 
+<details><summary>Solution</summary>
+
+```
 well_0002.txt:# Column 1 depth MDRKB (ft)
 well_0003.txt:# Column 1 depth MDRKB (ft)
 well_0004.txt:# Column 1 depth MDRKB (ft)
@@ -222,12 +228,18 @@ well_0056.txt:# Column 1 depth MDRKB (ft)
 well_0057.txt:# Column 1 depth MDRKB (ft)
 well_0059.txt:# Column 1 depth MDRKB (ft)
 ```
+</details>
+<p></p>
 
-and with the use of the earlier learned `cut` command we get:
+and we can combine this with the earlier learned `cut` command we get. What will be the outcome of the following command?
 
 ```
 egrep "(ft)" * | cut -d: -f1
+```
 
+<details><summary>Solution</summary>
+     
+```
 well_0002.txt
 well_0003.txt
 well_0004.txt
@@ -254,7 +266,10 @@ well_0057.txt
 well_0059.txt
 ```
 
-Now we can run a loop on these files and manipulate their depth columns
+</details>
+<p></p>
+
+This output can be used in a loop and piped to an awk-script to manipulate the depth columns and com\nvert these from *feet* to *meter*.
 
 ```
 for i in $(egrep "(ft)" * | cut -d: -f1); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR < 4) {print $0} else {print int($1*0.3048), $2}}' > $i.new; done
