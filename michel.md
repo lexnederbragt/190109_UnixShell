@@ -49,7 +49,7 @@ well_0059 17250 2043.78
 
 # Working with columns
 
-Let's write our first `awk` command. What do you expect the following command will print to `stdout`
+Let's write our first `awk` command. What do you expect the following command will print to `stdout`?
 
 ```
 cat well_0002.txt | awk '{print $1}'
@@ -73,15 +73,34 @@ cat well_0002.txt | awk '{print $1}'
 13350
 ```
 
-It prints the first columns of all the records.
+It prints the first column of all the records.
 </details>
 <p></p>
 
-I do not want the first 4 lines and want to remove them from the output. For this, we can look at a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
+I do not want the first 4 lines and want to remove them from the output. For this, we can look at a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number). What do you expect the following command will print to `stdout`? 
 
 ```
 cat well_0002.txt | awk '{if (FNR > 4) print $1}'
 ```
+
+<details><summary>Solution</summary>
+
+```
+5520
+7000
+8400
+9300
+9770
+10530
+10750
+12750
+13350
+```
+
+It prints the first column of record number 5 and onwards.
+</details>
+<p></p>
+
 
 <details><summary>Other build-in variable in `awk`</summary>
 [<a href="https://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/">8 Powerful Awk Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR</a>
