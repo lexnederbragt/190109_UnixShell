@@ -117,11 +117,33 @@ or
 cat well_0002.txt | awk 'BEGIN {OFS="\t"} {if (FNR > 4) print $1, $2}'
 ```
 
+<details><summary>Solution</summary>
+
+```
+5520    843.2
+7000    1089.3
+8400    1303.3
+9300    1434.3
+9770    1492.3
+10530   1570.4
+10750   1580.4
+12750   1700.4
+13350   1767.4
+```
+
+This command prints the first and second columns of record number 5 and onwards separated by a `TAB`.
+</details>
+<p></p>
+
+
 Now, I want to add a first column that contains the string *well_0002*, which is located in the first line of the file. I can get hold on that string in the beginning of the `awk` statement by setting a variable.
 
 ```
 cat well_0002.txt | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'
 
+<details><summary>Solution</summary>
+
+```
 well_0002       5520    843.2
 well_0002       7000    1089.3
 well_0002       8400    1303.3
@@ -133,16 +155,19 @@ well_0002       12750   1700.4
 well_0002       13350   1767.4
 ```
 
+</details>
+<p></p>
+
 Now I want to do this for all my wells. How can we do that?
 
 ```
-for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done
+for i in $(ls &ast.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done
 ```
 
 Last but not least, I want to write it to a file:
 
 ```
-for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done > file.asc
+for i in $(ls &ast.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_name = $3}; if (FNR > 4) print well_name, $1, $2}'; done > file.asc
 ```
 
 # Manipulating columns (if time is left)
