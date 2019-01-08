@@ -9,6 +9,8 @@ We will use a set of files and folders to practice a bit. Please copy this tarba
 
 `tar -xvzf data.tgz`
 
+This file is also available from abel directly at `/work/users/alexajo/190109_UnixShell_data.tgz`
+
 ## The `.bash_login` file
 * do you use your `.bash_login` file? It is located in your home area, so it is `~/.bash_login`
 * on some systems, the file may be called `.bash_profile` or `.bashrc`
@@ -824,3 +826,5 @@ set completion-prefix-display-length 2
 Control-j: menu-complete
 Control-k: menu-complete-backward
 ```
+
+* symlinks
