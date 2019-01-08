@@ -80,7 +80,7 @@ It prints the first columns of all the records.
 I do not want the first 4 lines and want to remove them from the output. For this, we can look at a buid-in variable of `awk` called `FNR`, which is the *field record number* (which can be compared to the line number).
 
 <details><summary>Other build-in variable in `awk`</summary>
-[8 Powerful Awk Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR](https://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/)
+[<a href="https://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/">8 Powerful Awk Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR</a>
 </details>
 <p></p>
 
