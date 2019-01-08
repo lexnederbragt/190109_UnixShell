@@ -101,7 +101,7 @@ for i in $(ls *.txt); do cat $i | awk 'BEGIN {OFS="\t"} {if (FNR == 1) {well_nam
 
 # Manipulating columns (if time is left)
 
-I have forgotten to check one thing before I started and that is whether all *depth* values are given in meters.
+I have forgotten to check one thing before I started and that is whether all *depth* values are given in meters. Some of these files might have depth values in *feet*. I want to adjust the files containing depth values in *feet*
 
 ```
 egrep "(ft)" *
