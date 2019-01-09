@@ -2,9 +2,6 @@
 # Column 1: Depth MDRKB (m)
 # Column 2: Tcorr one way time (ms)
 
-
-
-
             317            198.4
            2380           1139.8
            2440           1168.8
