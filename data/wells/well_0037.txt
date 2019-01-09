@@ -1,9 +1,6 @@
-  well_0037
-Well: 6407/6-4
-Column 1: Depth MDRKB (m)
-Column 2: One way time (ms)
-
-
+# Well  well_0037
+# Column 1: Depth MDRKB (m)
+# Column 2: One way time (ms)
 
             600              339
             700              385
