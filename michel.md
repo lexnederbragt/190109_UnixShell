@@ -132,6 +132,13 @@ cat well_0002.txt | awk 'BEGIN {OFS="\t"} {if (FNR > 4) print $1, $2}'
 ```
 
 This command prints the first and second columns of record number 5 and onwards separated by a `TAB`.
+
+This last command can actually also be written like this:
+
+```
+cat well_0002.txt | awk 'BEGIN {OFS="\t"} (FNR > 4)'
+```
+
 </details>
 <p></p>
 
