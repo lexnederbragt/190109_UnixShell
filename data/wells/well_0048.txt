@@ -1,13 +1,6 @@
-  well_0048
-# Well 6507/2-2
+# Well  well_0048
 # Column 1: depth MDRKB (m)
 # Column 2 : Tcorr one way time (ms)
-
-
-
-
-
-
 
            1000              355
            1400              723
