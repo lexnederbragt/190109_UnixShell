@@ -7,6 +7,8 @@ We will use a set of files and folders to practice a bit. Please copy this tarba
 
 `https://github.com/lexnederbragt/190109_UnixShell/data.tgz`
 
+Uncompress, for example using `tar`:
+
 `tar -xvzf data.tgz`
 
 This file is also available from abel directly at `/work/users/alexajo/190109_UnixShell_data.tgz`
@@ -44,6 +46,7 @@ source ~/.bash_login
 
 **Exercise:** put one or more of these aliases in your `.bash_login` file, execute the file and try the new alias(es) out on the files and folders you copied.
 
+### tar
 
 I use the following aliases to make creating and uncompressing 'tarballs' easier:
 
@@ -55,14 +58,19 @@ alias tarlist='tar -ztvf'
 
 (check out <https://xkcd.com/1168/>)
 
+### passwords
+
 Do you ever need a random password quickly:
 
 ```
 alias pw="tr -dc 'A-Za-z0-9!@#$%^&*' < /dev/urandom | fold -w 12 | head -n 1"
 ```
+
+Note that this (for me) only works on Abel, not on my Mac
+
 ### Shell variables
 
-Shell variables are containers for values. Some are builtin, such as $PWD, $HOME, $PATH and of course $PS1. But you can set any variable yourself. You can see all your variables by typing
+Shell variables hold values so they can be reused. Some are builtin, such as $PWD, $HOME and $PATH. But you can set any variable yourself. You can see all your variables by typing
 
 ```
 env
@@ -80,7 +88,6 @@ Now I can do this to log in to the cod nodes
 
 ```
 ssh $cod5
-
 ```
 
 Note how I don't have to type my username, this is because I am logging in as the same username I need to use on the cod nodes.
@@ -158,7 +165,17 @@ You may see this:
 * `\h` is the name of the server
 * `\W` is the name of the current folder
 
-Without going into the details, you can modify as you like. Some people like to have the full path of the current folder, instead of just the current folder. Others like colours. Here are a few examples, please try them out. Use the `export PS1=''` with the desired settings in the quotations marks.
+Without going into the details, you can modify as you like. Some people like to have the full path of the current folder, instead of just the current folder. Others like colours.
+
+When I am teaching, I usually set the prompt to only the dollar sign `$` and a space, like this:
+
+```
+export PS1='$ '
+```
+
+This saves me a lot of 'space' in the terminal window and reduces confusion for novices.
+
+Here are a few other examples, please try them out. Use the `export PS1=''` with the desired settings in the quotations marks.
 
 ```
 export PS1='[\h \W]$ '
@@ -185,9 +202,9 @@ if [ "$TERM" == "screen" ]; then
 fi
 ```
 ## Those Who Know History Can Choose to Repeat It
-(quote from <http://swcarpentry.github.io/shell-novice/04-loop.html>)
+(quote from an older version of the [Software Carpentry Unix Shell lesson](http://swcarpentry.github.io/shell-novice/))
 
-Simply typing `history` will show your last commands, up to 1000.
+Typing `history` will show your last commands, up to 1000.
 You can repeat the *nth* command by typing `!` followed by the number:
 
 ```
@@ -375,7 +392,7 @@ column -t -s $'\t' file.txt
 
 ## Finding files and looping over them
 
-[Inspired by the Software Carpentry lesson on the `find` command, at <http://swcarpentry.github.io/shell-novice/06-find.html>]
+[Inspired by the Software Carpentry lesson on the `find` command, at <http://swcarpentry.github.io/shell-novice/07-find/index.html>]
 
 If you are in the folder with material for this lesson, and you run `ls` you should see
 
@@ -445,7 +462,8 @@ Note we use the `.` here to indicate the current folder. You can also give the `
 
 We can restrict the output to folders only:
 
-```find . -type d
+```
+find . -type d
 .
 ./velvet
 ./velvet/temp
@@ -488,7 +506,7 @@ The problem is that the shell expands wildcard characters like `*` before comman
 find . -name emptyfile.txt
 ```
 
-The fix is easy:
+The fix is using quotation marks around `*.txt`:
 
 ```
 find . -name "*.txt"
@@ -498,7 +516,7 @@ find . -name "*.txt"
 ./emptyfile.txt
 ```
 
-I recommend to *always put quotation marks* around the `find` command.
+I recommend to *always put quotation marks* around fiename part of the `find` command.
 
 You can restrict the depth of searching in the file tree with `-maxdepth`, e.g.
 
@@ -828,3 +846,4 @@ Control-k: menu-complete-backward
 ```
 
 * symlinks
+* coloring command prompt based on git status <https://coderwall.com/p/pn8f0g/show-your-git-status-and-branch-in-color-at-the-command-prompt>
